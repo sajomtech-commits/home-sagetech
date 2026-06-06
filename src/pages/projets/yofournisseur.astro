@@ -1,0 +1,159 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import SectionTitle from '../../components/SectionTitle.astro';
+---
+
+<BaseLayout
+  title="YoFournisseur"
+  description="Catalogue fournisseurs Yupoo avec scraping automatique, 127 produits, mise à jour quotidienne."
+>
+  <Fragment slot="header">
+    <Header />
+  </Fragment>
+
+  <!-- Hero -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 py-24 text-center">
+    <span class="text-7xl sm:text-8xl block mb-6">📦</span>
+    <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4">YoFournisseur</h1>
+    <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+      Catalogue intelligent de fournisseurs Yupoo — scraping automatisé, interface mobile-first.
+    </p>
+  </section>
+
+  <!-- Objectif -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 py-16">
+    <SectionTitle
+      title="🎯 Objectif"
+      subtitle="Pourquoi ce projet ?"
+    />
+    <div class="bg-gray-900/50 border border-gray-800 rounded-xl p-6 sm:p-8">
+      <p class="text-gray-300 text-lg leading-relaxed">
+        Créer un catalogue de fournisseurs Yupoo accessible simplement depuis un téléphone.
+        Scraper automatiquement les produits des fournisseurs partenaires et les afficher dans
+        une interface propre et rapide.
+      </p>
+    </div>
+  </section>
+
+  <!-- Fonctionnalités -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 py-16">
+    <SectionTitle
+      title="⚙️ Fonctionnalités"
+      subtitle="Ce que le projet offre aujourd'hui"
+    />
+    <div class="bg-gray-900/50 border border-gray-800 rounded-xl p-6 sm:p-8">
+      <ul class="space-y-4 text-gray-300">
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-400 mt-0.5 shrink-0">▸</span>
+          <span><strong class="text-white">Scraping automatique</strong> de 7 fournisseurs Yupoo</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-400 mt-0.5 shrink-0">▸</span>
+          <span><strong class="text-white">127 produits</strong> référencés</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-400 mt-0.5 shrink-0">▸</span>
+          <span><strong class="text-white">95 images</strong> de produits</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-400 mt-0.5 shrink-0">▸</span>
+          <span><strong class="text-white">Mise à jour quotidienne</strong> (cache HTML désactivé)</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-400 mt-0.5 shrink-0">▸</span>
+          <span><strong class="text-white">Interface mobile-first</strong> (iPhone/Safari)</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-400 mt-0.5 shrink-0">▸</span>
+          <span><strong class="text-white">Page GitHub Pages</strong> déployée automatiquement</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Prochaines étapes -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 py-16">
+    <SectionTitle
+      title="🚧 Prochaines étapes"
+      subtitle="Ce qui est prévu ensuite"
+    />
+    <div class="bg-gray-900/50 border border-gray-800 rounded-xl p-6 sm:p-8">
+      <ul class="space-y-4 text-gray-300">
+        <li class="flex items-start gap-3">
+          <span class="text-amber-400 mt-0.5 shrink-0">⏳</span>
+          <span>Amélioration du système de filtres par catégorie</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-amber-400 mt-0.5 shrink-0">⏳</span>
+          <span>Recherche full-text</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-amber-400 mt-0.5 shrink-0">⏳</span>
+          <span>Pagination et lazy loading des images</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-amber-400 mt-0.5 shrink-0">⏳</span>
+          <span>Dashboard admin</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Idées d'évolution -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 py-16">
+    <SectionTitle
+      title="💡 Idées d'évolution"
+      subtitle="Futures fonctionnalités envisagées"
+    />
+    <div class="bg-gray-900/50 border border-gray-800 rounded-xl p-6 sm:p-8">
+      <ul class="space-y-4 text-gray-300">
+        <li class="flex items-start gap-3">
+          <span class="text-cyan-400 mt-0.5 shrink-0">✦</span>
+          <span>Comparateur de prix entre fournisseurs</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-cyan-400 mt-0.5 shrink-0">✦</span>
+          <span>Favoris / wishlist</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-cyan-400 mt-0.5 shrink-0">✦</span>
+          <span>Notifications de nouveaux arrivages</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-cyan-400 mt-0.5 shrink-0">✦</span>
+          <span>API pour intégration externe</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Liens utiles -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 py-16">
+    <SectionTitle
+      title="🔗 Liens utiles"
+      subtitle="Accès directs"
+    />
+    <div class="flex flex-wrap gap-4">
+      <a
+        href="https://sajomtech-commits.github.io/YoFournisseur/"
+        target="_blank"
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-indigo-600/20 border border-indigo-500/40 text-indigo-400 hover:text-indigo-300 hover:bg-indigo-600/30 hover:border-indigo-400 transition-all duration-200 font-medium"
+      >
+        Site YoFournisseur →
+      </a>
+      <a
+        href="https://github.com/sajomtech-commits/YoFournisseur"
+        target="_blank"
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gray-800/60 border border-gray-700 text-gray-300 hover:text-white hover:bg-gray-800 hover:border-gray-600 transition-all duration-200 font-medium"
+      >
+        Dépôt GitHub →
+      </a>
+    </div>
+  </section>
+
+  <Fragment slot="footer">
+    <Footer />
+  </Fragment>
+</BaseLayout>

@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import SectionTitle from '../../components/SectionTitle.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { projects } from '../../data/index';
+
+// Catégories dans l'ordre d'affichage souhaité
+const categoryOrder = ['Outils', 'Apps', 'Veille', 'Automatisations', 'Infra', 'Idées'];
+
+// Icônes pour chaque catégorie
+const categoryIcons: Record<string, string> = {
+  Outils: '🔧',
+  Apps: '📱',
+  Veille: '📡',
+  Automatisations: '⚡',
+  Infra: '🖥️',
+  Idées: '💡',
+};
+
+// Description pour chaque catégorie
+const categoryDescriptions: Record<string, string> = {
+  Outils: 'Utilitaires et applications pratiques du quotidien.',
+  Apps: 'Applications web et mobiles en cours de conception.',
+  Veille: 'Outils et projets liés à la veille technologique.',
+  Automatisations: 'Workflows et processus automatisés.',
+  Infra: 'Infrastructure, serveurs et services auto-hébergés.',
+  Idées: 'Concepts et futurs projets en attente.',
+};
+
+// Grouper les projets par catégorie, en respectant l'ordre défini
+const grouped = categoryOrder
+  .map((cat) => ({
+    category: cat,
+    icon: categoryIcons[cat],
+    description: categoryDescriptions[cat],
+    items: projects.filter((p) => p.category === cat),
+  }))
+  .filter((group) => group.items.length > 0);
+---
+
+<BaseLayout
+  title="Projets"
+  description="Tous les projets SageTech regroupés par catégorie."
+>
+  <Fragment slot="header">
+    <Header />
+  </Fragment>
+
+  <!-- Section titre -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 py-16">
+    <SectionTitle
+      title="Tous mes projets"
+      subtitle="L'ensemble des projets SageTech, classés par catégorie."
+    />
+  </section>
+
+  <!-- Groupes par catégorie -->
+  {grouped.map((group) => (
+    <section class="mx-auto max-w-6xl px-4 sm:px-6 py-16">
+      <SectionTitle
+        title={`${group.icon} ${group.category}`}
+        subtitle={group.description}
+      />
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {group.items.map((project) => (
+          <ProjectCard project={project} />
+        ))}
+      </div>
+    </section>
+  ))}
+
+  <Fragment slot="footer">
+    <Footer />
+  </Fragment>
+</BaseLayout>

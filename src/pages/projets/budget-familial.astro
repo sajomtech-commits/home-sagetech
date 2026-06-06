@@ -1,0 +1,178 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import SectionTitle from '../../components/SectionTitle.astro';
+---
+
+<BaseLayout
+  title="Budget Familial"
+  description="Dashboard budget mensuel avec comptes Bourso, charges fixes et visualisation des dépenses du foyer."
+>
+  <Fragment slot="header">
+    <Header />
+  </Fragment>
+
+  <!-- Hero -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 py-24 text-center">
+    <span class="text-7xl sm:text-8xl block mb-6">💰</span>
+    <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4">Budget Familial</h1>
+    <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+      Tableau de bord mensuel pour suivre les comptes, charges fixes et dépenses du foyer.
+    </p>
+  </section>
+
+  <!-- Objectif -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 py-16">
+    <SectionTitle
+      title="🎯 Objectif"
+      subtitle="Pourquoi ce projet ?"
+    />
+    <div class="bg-gray-900/50 border border-gray-800 rounded-xl p-6 sm:p-8">
+      <p class="text-gray-300 text-lg leading-relaxed mb-4">
+        Dashboard budget mensuel pour suivre les comptes Bourso, les charges fixes et visualiser 
+        les dépenses du foyer en un coup d'œil.
+      </p>
+      <h3 class="text-white font-semibold mb-3">Comptes suivis :</h3>
+      <ul class="space-y-2 text-gray-300">
+        <li class="flex items-center gap-2">
+          <span class="text-indigo-400">▸</span>
+          <span>Bourso joint — Vie courante</span>
+        </li>
+        <li class="flex items-center gap-2">
+          <span class="text-indigo-400">▸</span>
+          <span>Bourso joint — Épargne</span>
+        </li>
+        <li class="flex items-center gap-2">
+          <span class="text-indigo-400">▸</span>
+          <span>Bourso Hayette</span>
+        </li>
+        <li class="flex items-center gap-2">
+          <span class="text-indigo-400">▸</span>
+          <span>Bourso Rachid</span>
+        </li>
+        <li class="flex items-center gap-2">
+          <span class="text-indigo-400">▸</span>
+          <span>Bourso Amine</span>
+        </li>
+        <li class="flex items-center gap-2">
+          <span class="text-indigo-400">▸</span>
+          <span>Bourso Mayssa</span>
+        </li>
+        <li class="flex items-center gap-2">
+          <span class="text-indigo-400">▸</span>
+          <span>Bourso Assiya</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Catégories suivies -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 py-16">
+    <SectionTitle
+      title="📊 Catégories suivies"
+      subtitle="Les grands pôles du budget"
+    />
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+      <div class="bg-gray-900/50 border border-gray-800 rounded-xl p-6 text-center">
+        <span class="text-4xl block mb-3">📋</span>
+        <h3 class="text-white font-semibold text-lg mb-2">Charges fixes</h3>
+        <p class="text-gray-400 text-sm">
+          Loyer, assurances, abonnements, énergie — toutes les dépenses récurrentes du foyer.
+        </p>
+      </div>
+      <div class="bg-gray-900/50 border border-gray-800 rounded-xl p-6 text-center">
+        <span class="text-4xl block mb-3">💳</span>
+        <h3 class="text-white font-semibold text-lg mb-2">Reste</h3>
+        <p class="text-gray-400 text-sm">
+          Budget disponible après charges fixes — courses, loisirs, transports, imprévus.
+        </p>
+      </div>
+      <div class="bg-gray-900/50 border border-gray-800 rounded-xl p-6 text-center">
+        <span class="text-4xl block mb-3">🐷</span>
+        <h3 class="text-white font-semibold text-lg mb-2">Épargne</h3>
+        <p class="text-gray-400 text-sm">
+          Montant épargné chaque mois, réparti entre les différents comptes et objectifs.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Idées de dashboard -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 py-16">
+    <SectionTitle
+      title="📈 Idées de dashboard"
+      subtitle="Fonctionnalités envisagées pour l'interface"
+    />
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div class="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+        <div class="flex items-start gap-4">
+          <span class="text-3xl shrink-0">📊</span>
+          <div>
+            <h3 class="text-white font-semibold">Graphiques dépenses par compte</h3>
+            <p class="text-gray-400 text-sm mt-1">Visualisation des flux par compte Bourso avec répartition et tendances.</p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+        <div class="flex items-start gap-4">
+          <span class="text-3xl shrink-0">🔮</span>
+          <div>
+            <h3 class="text-white font-semibold">Prévisions mensuelles</h3>
+            <p class="text-gray-400 text-sm mt-1">Estimation du solde restant basée sur l'historique et les charges à venir.</p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+        <div class="flex items-start gap-4">
+          <span class="text-3xl shrink-0">🚨</span>
+          <div>
+            <h3 class="text-white font-semibold">Alertes de dépassement</h3>
+            <p class="text-gray-400 text-sm mt-1">Notifications quand un budget catégorie approche de sa limite ou est dépassé.</p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+        <div class="flex items-start gap-4">
+          <span class="text-3xl shrink-0">📄</span>
+          <div>
+            <h3 class="text-white font-semibold">Export PDF</h3>
+            <p class="text-gray-400 text-sm mt-1">Génération d'un rapport mensuel au format PDF pour archivage ou partage.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prochaines évolutions -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 py-16">
+    <SectionTitle
+      title="🚧 Prochaines évolutions"
+      subtitle="Ce qui est prévu ensuite"
+    />
+    <div class="bg-gray-900/50 border border-gray-800 rounded-xl p-6 sm:p-8">
+      <ul class="space-y-4 text-gray-300">
+        <li class="flex items-start gap-3">
+          <span class="text-amber-400 mt-0.5 shrink-0">⏳</span>
+          <span><strong class="text-white">Ajout des graphiques</strong> — Intégration de Chart.js ou Recharts pour les visualisations</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-amber-400 mt-0.5 shrink-0">⏳</span>
+          <span><strong class="text-white">Prévisions IA</strong> — Prédiction des dépenses via analyse des tendances passées</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-amber-400 mt-0.5 shrink-0">⏳</span>
+          <span><strong class="text-white">Catégories personnalisées</strong> — Création et édition des catégories de dépenses par l'utilisateur</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-amber-400 mt-0.5 shrink-0">⏳</span>
+          <span><strong class="text-white">Vue mobile améliorée</strong> — Optimisation de l'interface pour les smartphones</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <Fragment slot="footer">
+    <Footer />
+  </Fragment>
+</BaseLayout>

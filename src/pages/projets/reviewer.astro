@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import SectionTitle from '../../components/SectionTitle.astro';
+---
+
+<BaseLayout
+  title="Reviewer"
+  description="Plateforme d'avis et comparatifs produits. Partagez votre expérience sur des produits avec des notations structurées."
+>
+  <Fragment slot="header">
+    <Header />
+  </Fragment>
+
+  <!-- Hero -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 py-24 text-center">
+    <span class="text-7xl sm:text-8xl block mb-6">⭐</span>
+    <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4">Reviewer</h1>
+    <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+      Plateforme d'avis et comparatifs produits — notations structurées, photos réelles, partage d'expérience.
+    </p>
+  </section>
+
+  <!-- Objectif -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 py-16">
+    <SectionTitle
+      title="🎯 Objectif"
+      subtitle="Pourquoi ce projet ?"
+    />
+    <div class="bg-gray-900/50 border border-gray-800 rounded-xl p-6 sm:p-8">
+      <p class="text-gray-300 text-lg leading-relaxed">
+        Plateforme d'avis et comparatifs produits. Permettre à l'utilisateur de partager son expérience
+        sur des produits (shopping, tech, maison) avec des notations structurées.
+      </p>
+    </div>
+  </section>
+
+  <!-- Cas d'usage -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 py-16">
+    <SectionTitle
+      title="📌 Cas d'usage"
+      subtitle="Comment la plateforme sera utilisée"
+    />
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div class="bg-gray-900/50 border border-gray-800 rounded-xl p-6 sm:p-8">
+        <span class="text-3xl block mb-4">🛍️</span>
+        <h3 class="text-xl font-semibold text-white mb-2">Avis shopping</h3>
+        <p class="text-gray-400">Vêtements, accessoires, répliques</p>
+      </div>
+      <div class="bg-gray-900/50 border border-gray-800 rounded-xl p-6 sm:p-8">
+        <span class="text-3xl block mb-4">⚖️</span>
+        <h3 class="text-xl font-semibold text-white mb-2">Comparatifs</h3>
+        <p class="text-gray-400">Rapports qualité/prix entre fournisseurs</p>
+      </div>
+      <div class="bg-gray-900/50 border border-gray-800 rounded-xl p-6 sm:p-8">
+        <span class="text-3xl block mb-4">⭐</span>
+        <h3 class="text-xl font-semibold text-white mb-2">Notations</h3>
+        <p class="text-gray-400">Système de notes structuré par catégories</p>
+      </div>
+      <div class="bg-gray-900/50 border border-gray-800 rounded-xl p-6 sm:p-8">
+        <span class="text-3xl block mb-4">📸</span>
+        <h3 class="text-xl font-semibold text-white mb-2">Galerie photos</h3>
+        <p class="text-gray-400">Photos réelles des produits reçus</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fonctionnalités prévues -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 py-16">
+    <SectionTitle
+      title="⚙️ Fonctionnalités prévues"
+      subtitle="Ce que le projet proposera"
+    />
+    <div class="bg-gray-900/50 border border-gray-800 rounded-xl p-6 sm:p-8">
+      <ul class="space-y-4 text-gray-300">
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-400 mt-0.5 shrink-0">▸</span>
+          <span><strong class="text-white">Pages produits</strong> avec photos réelles</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-400 mt-0.5 shrink-0">▸</span>
+          <span><strong class="text-white">Système de notation</strong> (sur 5 étoiles) par critères</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-400 mt-0.5 shrink-0">▸</span>
+          <span><strong class="text-white">Tags et catégories</strong> pour filtrage</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-400 mt-0.5 shrink-0">▸</span>
+          <span><strong class="text-white">Mode sombre</strong> mobile-first</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-400 mt-0.5 shrink-0">▸</span>
+          <span><strong class="text-white">Exportable / partageable</strong></span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Prochaines étapes -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 py-16">
+    <SectionTitle
+      title="🚧 Prochaines étapes"
+      subtitle="Le planning à venir"
+    />
+    <div class="bg-gray-900/50 border border-gray-800 rounded-xl p-6 sm:p-8">
+      <ul class="space-y-4 text-gray-300">
+        <li class="flex items-start gap-3">
+          <span class="text-amber-400 mt-0.5 shrink-0">⏳</span>
+          <span>Définir le design system</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-amber-400 mt-0.5 shrink-0">⏳</span>
+          <span>Créer le squelette HTML/CSS</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-amber-400 mt-0.5 shrink-0">⏳</span>
+          <span>Intégrer les premiers avis</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-amber-400 mt-0.5 shrink-0">⏳</span>
+          <span>Déploiement sur GitHub Pages ou Coolify</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <Fragment slot="footer">
+    <Footer />
+  </Fragment>
+</BaseLayout>

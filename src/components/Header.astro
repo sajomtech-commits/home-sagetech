@@ -1,0 +1,39 @@
+---
+const currentPath = Astro.url.pathname;
+
+const links = [
+  { href: '/', label: 'Accueil' },
+  { href: '/projets', label: 'Projets' },
+  { href: '/veille-techno', label: 'Veille' },
+  { href: '/automatisations', label: 'Automatisations' },
+  { href: '/documentation', label: 'Documentation' },
+  { href: '/roadmap', label: 'Roadmap' },
+];
+---
+
+<header class="sticky top-0 z-50 border-b border-gray-800/60 bg-[#0a0a0f]/90 backdrop-blur-md">
+  <nav class="mx-auto max-w-6xl flex items-center justify-between px-4 sm:px-6 h-14">
+    <a href="/" class="flex items-center gap-2 text-white font-bold text-lg hover:text-indigo-400 transition-colors">
+      <span class="text-xl">🏠</span>
+      <span class="hidden sm:inline">SageTech</span>
+    </a>
+
+    <div class="flex items-center gap-1">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              'px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200',
+              currentPath === link.href
+                ? 'bg-indigo-500/15 text-indigo-300'
+                : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800/50',
+            ]}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </div>
+  </nav>
+</header>

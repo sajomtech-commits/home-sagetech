@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import RoadmapItem from '../components/RoadmapItem.astro';
+import { roadmapItems } from '../data/index';
+
+const doneItems = roadmapItems.filter((item) => item.status === 'done');
+const doingItems = roadmapItems.filter((item) => item.status === 'doing');
+const todoItems = roadmapItems.filter((item) => item.status === 'todo');
+const ideaItems = roadmapItems.filter((item) => item.status === 'idea');
+---
+
+<BaseLayout
+  title="Roadmap"
+  description="Feuille de route SageTech — suivez l'avancement des projets, les tâches en cours et les idées futures."
+>
+  <Fragment slot="header">
+    <Header />
+  </Fragment>
+
+  <!-- Hero -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 py-24 text-center">
+    <span class="text-7xl sm:text-8xl block mb-6">🗺️</span>
+    <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4">Roadmap</h1>
+    <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+      Feuille de route des projets SageTech — ce qui est fait, en cours, à venir et en réflexion.
+    </p>
+  </section>
+
+  <!-- Terminé -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 py-16">
+    <SectionTitle
+      title="✅ Terminé"
+      subtitle="Projets et fonctionnalités livrés"
+    />
+    {doneItems.length > 0 ? (
+      <div class="flex flex-col gap-4 mt-8">
+        {doneItems.map((item) => (
+          <RoadmapItem
+            status={item.status}
+            title={item.title}
+            description={item.description}
+          />
+        ))}
+      </div>
+    ) : (
+      <p class="text-gray-500 text-center py-8">Aucun élément terminé pour le moment.</p>
+    )}
+  </section>
+
+  <!-- En cours -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 py-16">
+    <SectionTitle
+      title="🔄 En cours"
+      subtitle="Ce qui est activement développé"
+    />
+    {doingItems.length > 0 ? (
+      <div class="flex flex-col gap-4 mt-8">
+        {doingItems.map((item) => (
+          <RoadmapItem
+            status={item.status}
+            title={item.title}
+            description={item.description}
+          />
+        ))}
+      </div>
+    ) : (
+      <p class="text-gray-500 text-center py-8">Aucun élément en cours actuellement.</p>
+    )}
+  </section>
+
+  <!-- À faire -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 py-16">
+    <SectionTitle
+      title="📋 À faire"
+      subtitle="Prochaines étapes planifiées"
+    />
+    {todoItems.length > 0 ? (
+      <div class="flex flex-col gap-4 mt-8">
+        {todoItems.map((item) => (
+          <RoadmapItem
+            status={item.status}
+            title={item.title}
+            description={item.description}
+          />
+        ))}
+      </div>
+    ) : (
+      <p class="text-gray-500 text-center py-8">Aucune tâche planifiée pour le moment.</p>
+    )}
+  </section>
+
+  <!-- Idées -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 py-16">
+    <SectionTitle
+      title="💡 Idées"
+      subtitle="Concepts et réflexions en attente"
+    />
+    {ideaItems.length > 0 ? (
+      <div class="flex flex-col gap-4 mt-8">
+        {ideaItems.map((item) => (
+          <RoadmapItem
+            status={item.status}
+            title={item.title}
+            description={item.description}
+          />
+        ))}
+      </div>
+    ) : (
+      <p class="text-gray-500 text-center py-8">Aucune idée pour le moment.</p>
+    )}
+  </section>
+
+  <Fragment slot="footer">
+    <Footer />
+  </Fragment>
+</BaseLayout>

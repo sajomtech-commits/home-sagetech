@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import { veilleArticles } from '../data/index';
+
+// Catégories disponibles dans les articles
+const categories = ['IA', 'Docker', 'Linux', 'n8n', 'Coolify', 'Microsoft 365', 'Cybersécurité'];
+
+// Couleurs pour chaque catégorie
+const categoryColors: Record<string, string> = {
+  'IA': 'bg-violet-500/10 text-violet-400 border-violet-500/20',
+  'Docker': 'bg-sky-500/10 text-sky-400 border-sky-500/20',
+  'Linux': 'bg-amber-500/10 text-amber-400 border-amber-500/20',
+  'n8n': 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
+  'Coolify': 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20',
+  'Microsoft 365': 'bg-blue-500/10 text-blue-400 border-blue-500/20',
+  'Cybersécurité': 'bg-red-500/10 text-red-400 border-red-500/20',
+};
+---
+
+<BaseLayout
+  title="Veille Techno"
+  description="Newsletter quotidienne IA, GitHub et outils tech — générée automatiquement par Hermes Agent via cron Telegram."
+>
+  <Fragment slot="header">
+    <Header />
+  </Fragment>
+
+  <!-- Hero -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 py-24 text-center">
+    <span class="text-7xl sm:text-8xl block mb-6">📡</span>
+    <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4">Veille Techno</h1>
+    <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+      Actualités et découvertes tech, livrées chaque matin en français.
+    </p>
+  </section>
+
+  <!-- Catégories -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 py-16">
+    <SectionTitle
+      title="🏷️ Catégories"
+      subtitle="Les domaines couverts par la veille"
+    />
+    <div class="flex flex-wrap gap-3">
+      {categories.map((cat) => {
+        const colorClass = categoryColors[cat] || 'bg-gray-500/10 text-gray-400 border-gray-500/20';
+        return (
+          <span
+            class={`inline-flex items-center px-4 py-2 rounded-full text-sm font-medium border ${colorClass} transition-colors`}
+          >
+            {cat}
+          </span>
+        );
+      })}
+    </div>
+  </section>
+
+  <!-- Articles récents -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 py-16">
+    <SectionTitle
+      title="📰 Articles récents"
+      subtitle="Les dernières actualités tech sélectionnées pour vous"
+    />
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      {veilleArticles.map((article) => {
+        const colorClass = categoryColors[article.category] || 'bg-gray-500/10 text-gray-400 border-gray-500/20';
+        return (
+          <div class="bg-gray-900/50 border border-gray-800 rounded-xl p-6 hover:border-gray-700 transition-all duration-200">
+            <div class="flex items-center justify-between mb-3">
+              <span
+                class={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${colorClass}`}
+              >
+                {article.category}
+              </span>
+              <span class="text-xs text-gray-500">{article.date}</span>
+            </div>
+            <h3 class="text-white font-semibold text-lg mb-2">{article.title}</h3>
+            <p class="text-gray-400 text-sm leading-relaxed mb-4">{article.excerpt}</p>
+            <div class="flex flex-wrap gap-2">
+              {article.tags.map((tag) => (
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs bg-gray-800 text-gray-400 border border-gray-700">
+                  #{tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </section>
+
+  <!-- À propos -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 py-16">
+    <SectionTitle
+      title="ℹ️ À propos"
+      subtitle="Comment fonctionne cette veille ?"
+    />
+    <div class="bg-gray-900/50 border border-gray-800 rounded-xl p-6 sm:p-8">
+      <p class="text-gray-300 text-lg leading-relaxed">
+        La veille technologique est générée automatiquement par <strong class="text-white">Hermes Agent</strong> 
+        via un cron Telegram. Chaque matin, deux newsletters sont livrées en français :
+      </p>
+      <ul class="mt-4 space-y-3 text-gray-300">
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-400 mt-0.5 shrink-0">▸</span>
+          <span><strong class="text-white">7h30</strong> — IA &amp; Recherche : modèles, papiers, avancées en intelligence artificielle</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-400 mt-0.5 shrink-0">▸</span>
+          <span><strong class="text-white">8h30</strong> — Outils &amp; GitHub : nouveaux projets, releases, tendances DevOps</span>
+        </li>
+      </ul>
+      <p class="mt-4 text-gray-400 text-sm">
+        La curation est entièrement automatique : Hermes Agent collecte, résume et formate les actualités 
+        avant de les publier sur Telegram. Aucune intervention manuelle requise.
+      </p>
+    </div>
+  </section>
+
+  <Fragment slot="footer">
+    <Footer />
+  </Fragment>
+</BaseLayout>

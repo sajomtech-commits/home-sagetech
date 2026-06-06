@@ -1,0 +1,31 @@
+---
+export interface Props {
+  status: 'done' | 'doing' | 'todo' | 'idea';
+  title: string;
+  description: string;
+}
+
+const { status, title, description } = Astro.props;
+
+const config = {
+  done:   { icon: '✅', color: 'border-emerald-500/30 bg-emerald-500/5', label: 'Terminé' },
+  doing:  { icon: '🔄', color: 'border-indigo-500/30 bg-indigo-500/5', label: 'En cours' },
+  todo:   { icon: '📋', color: 'border-amber-500/30 bg-amber-500/5', label: 'À faire' },
+  idea:   { icon: '💡', color: 'border-gray-500/30 bg-gray-500/5', label: 'Idée' },
+};
+
+const cfg = config[status];
+---
+
+<div class="rounded-xl border {cfg.color} p-4 transition-all duration-200 hover:border-opacity-60">
+  <div class="flex items-start gap-3">
+    <span class="text-lg mt-0.5">{cfg.icon}</span>
+    <div>
+      <div class="flex items-center gap-2 mb-1">
+        <h3 class="font-semibold text-white text-sm">{title}</h3>
+        <span class="text-xs text-gray-500">({cfg.label})</span>
+      </div>
+      <p class="text-sm text-gray-400 leading-relaxed">{description}</p>
+    </div>
+  </div>
+</div>
