@@ -4,3 +4,6 @@ dist/
 .env.local
 .DS_Store
 *.tsbuildinfo
+.hermes-tmp.*
+TEST.md
+PYTEST.md
