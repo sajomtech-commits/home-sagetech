@@ -1,0 +1,19 @@
+---
+import type { App } from '../data/apps';
+export interface Props { app: App }
+const { app } = Astro.props;
+---
+<div class="bg-rose-500/10 border border-rose-500/30 rounded-xl p-6 my-6">
+  <div class="flex items-start gap-4">
+    <span class="text-2xl shrink-0">\u26a0\ufe0f</span>
+    <div>
+      <h3 class="text-rose-400 font-semibold mb-1">Action de s\u00e9curit\u00e9 requise</h3>
+      <p class="text-gray-400 text-sm leading-relaxed">
+        {app.nextAction}
+      </p>
+      <a href="/securite" class="inline-block mt-3 text-sm text-rose-400 hover:text-rose-300">
+        Voir le plan de s\u00e9curisation \u2192
+      </a>
+    </div>
+  </div>
+</div>

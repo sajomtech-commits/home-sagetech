@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { apps } from '../../data/apps';
+export function getStaticPaths() {
+  return apps.map(a => ({ params: { slug: a.slug }, props: { app: a } }));
+}
+const { app } = Astro.props;
+const labels: Record<string, string> = {
+  actif: 'Actif \u2705', 'a-securiser': '\u00c0 s\u00e9curiser \ud83d\udd34',
+  'a-migrer': '\u00c0 migrer \ud83d\udfe1', archive: 'Archiv\u00e9 \u26aa'
+};
+const sens: Record<string, string> = { faible: 'Faible \ud83d\udfe2', moyen: 'Moyen \ud83d\udfe1', critique: 'Critique \ud83d\udd34' };
+const mig: Record<string, string> = { 'non-migre': 'Non migr\u00e9', 'en-cours': 'En cours', integre: 'Int\u00e9gr\u00e9', archive: 'Archiv\u00e9' };
+---
+<BaseLayout title={app.name}>
+  <Fragment slot="header"><Header /></Fragment>
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 py-24">
+    <a href="/apps" class="text-sm text-indigo-400 hover:text-indigo-300 mb-6 inline-block">\u2190 Retour aux applications</a>
+    <h1 class="text-3xl sm:text-4xl font-bold text-white mb-2">{app.name}</h1>
+    <p class="text-gray-400 mb-8">{app.description}</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+      <div class="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+        <h3 class="font-semibold text-white mb-4">Informations</h3>
+        <dl class="space-y-3 text-sm">
+          <div class="flex justify-between"><dt class="text-gray-500">Statut</dt><dd>{labels[app.status]}</dd></div>
+          <div class="flex justify-between"><dt class="text-gray-500">Technologie</dt><dd class="text-gray-300">{app.technology}</dd></div>
+          <div class="flex justify-between"><dt class="text-gray-500">Supabase</dt><dd>{app.usesSupabase ? 'Oui' : 'Non'}</dd></div>
+          {app.usesSupabase && app.supabaseTables.length > 0 && <div class="flex justify-between"><dt class="text-gray-500">Tables</dt><dd class="text-gray-300">{app.supabaseTables.join(', ')}</dd></div>}
+          <div class="flex justify-between"><dt class="text-gray-500">Sensibilit\u00e9</dt><dd>{sens[app.sensitivityLevel]}</dd></div>
+          <div class="flex justify-between"><dt class="text-gray-500">Migration</dt><dd>{mig[app.migrationStatus]}</dd></div>
+        </dl>
+      </div>
+      <div class="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+        <h3 class="font-semibold text-white mb-4">Liens</h3>
+        <div class="space-y-3">
+          <a href={app.githubPagesUrl} target="_blank" class="flex items-center gap-2 text-indigo-400 hover:text-indigo-300 text-sm"><span>\ud83c\udf10</span> Site en ligne \u2192</a>
+          <a href={app.githubRepoUrl} target="_blank" class="flex items-center gap-2 text-indigo-400 hover:text-indigo-300 text-sm"><span>\ud83d\udc19</span> D\u00e9p\u00f4t GitHub \u2192</a>
+        </div>
+        {app.status === 'a-securiser' && <div class="bg-rose-500/10 border border-rose-500/30 rounded-xl p-4 mt-4"><h4 class="text-rose-400 font-semibold text-sm mb-1">\u26a0\ufe0f Action requise</h4><p class="text-gray-400 text-xs">{app.nextAction}</p></div>}
+      </div>
+    </div>
+    <div class="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+      <h3 class="font-semibold text-white mb-2">Plan de migration</h3>
+      <p class="text-gray-400 text-sm leading-relaxed">
+        {app.migrationStatus === 'archive' ? "Ce projet est archiv\u00e9." : "Pour l'instant ce projet reste sur GitHub Pages. Le portail pointe vers lui via un lien externe. Une fois s\u00e9curis\u00e9, le code pourra \u00eatre copi\u00e9 dans le portail."}
+      </p>
+    </div>
+  </section>
+  <Fragment slot="footer"><Footer /></Fragment>
+</BaseLayout>

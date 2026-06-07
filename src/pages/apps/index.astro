@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import SectionTitle from '../../components/SectionTitle.astro';
+import AppCard from '../../components/AppCard.astro';
+import { apps } from '../../data/apps';
+---
+<BaseLayout title="Apps">
+  <Fragment slot="header"><Header /></Fragment>
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 py-24 text-center">
+    <span class="text-7xl sm:text-8xl block mb-6">📱</span>
+    <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4">Applications</h1>
+    <p class="text-lg text-gray-400 max-w-2xl mx-auto">Toutes mes applications GitHub Pages.</p>
+  </section>
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 pb-16">
+    <SectionTitle title="Actives" />
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+      {apps.filter(a => a.status === 'actif').map(app => <AppCard app={app} />)}
+    </div>
+  </section>
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 pb-16">
+    <SectionTitle title="À sécuriser" />
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+      {apps.filter(a => a.status === 'a-securiser').map(app => <AppCard app={app} />)}
+    </div>
+  </section>
+  {apps.filter(a => a.status === 'archive').length > 0 && (
+    <section class="mx-auto max-w-6xl px-4 sm:px-6 pb-24">
+      <SectionTitle title="Archivées" />
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+        {apps.filter(a => a.status === 'archive').map(app => <AppCard app={app} />)}
+      </div>
+    </section>
+  )}
+  <Fragment slot="footer"><Footer /></Fragment>
+</BaseLayout>

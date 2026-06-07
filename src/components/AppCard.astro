@@ -1,0 +1,27 @@
+---
+import type { App } from '../data/apps';
+export interface Props { app: App }
+const { app } = Astro.props;
+const sc: Record<string,{color:string,label:string}> = {
+  actif: { color: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30', label: 'Actif' },
+  'a-securiser': { color: 'bg-rose-500/15 text-rose-400 border-rose-500/30', label: 'À sécuriser' },
+  'a-migrer': { color: 'bg-amber-500/15 text-amber-400 border-amber-500/30', label: 'À migrer' },
+  archive: { color: 'bg-gray-500/15 text-gray-400 border-gray-500/30', label: 'Archivé' },
+};
+const s = sc[app.status];
+---
+<a href={`/apps/${app.slug}`} class="group block rounded-xl border border-gray-800 bg-[#111118] p-5 transition-all duration-200 hover:border-indigo-500/50 hover:bg-[#16161f] hover:-translate-y-0.5 hover:shadow-lg hover:shadow-indigo-500/5">
+  <div class="flex items-start justify-between mb-3">
+    <div class="flex flex-wrap gap-2">
+      <span class="text-xs font-medium px-2.5 py-0.5 rounded-full border {s.color}">{s.label}</span>
+      {app.usesSupabase && <span class="text-xs px-2.5 py-0.5 rounded-full bg-green-500/10 text-green-400 border border-green-500/30">Supabase</span>}
+      {app.sensitivityLevel === 'critique' && <span class="text-xs px-2.5 py-0.5 rounded-full bg-rose-500/10 text-rose-400 border border-rose-500/30">Sensible</span>}
+    </div>
+  </div>
+  <h3 class="font-semibold text-white mb-1.5 group-hover:text-indigo-300 transition-colors">{app.name}</h3>
+  <p class="text-sm text-gray-400 leading-relaxed mb-3">{app.description}</p>
+  <div class="flex items-center gap-3 text-xs text-gray-500">
+    <span>🛠 {app.technology}</span>
+    <span class="ml-auto">{app.nextAction ? '⏳ '+app.nextAction.slice(0,35)+'…' : '✅ À jour'}</span>
+  </div>
+</a>
